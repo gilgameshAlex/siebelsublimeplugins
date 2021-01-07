@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<plist version="1.0">
+    <dict>
+        <key>patterns</key>
+        <array>
+            
+            <dict>
+                <key>name</key>
+                <string>Red</string> <!-- Имя стиля --> 
+                <key>match</key>
+                <string>(Export Failed)|(Symbolic String not found)|(\))|(\()|(\b(Error)|(GenericError)\s\d{1}\s([a-z0-9]{16}):\d{1}\b)|(Err:)</string> <!-- Ошибки --> 
+            </dict>
+
+            <dict>
+                <key>name</key>
+                <string>EasyRed</string>
+                <key>match</key>
+                <string>(\bSBL-((CFG)|(DAT)|(EAI)|(UIF)|(EXL)|(APS)|(DBC)|(BPR)|(GEN))-\d{4,5}\b:)|(No updates allowed)|(Ignoring error on field Update)|(Этот объект неактивен или не существует.)|(Не удалось найти объект)</string> 
+            </dict>
+
+
+            <dict>
+                <key>name</key>
+                <string>Yellow</string> <!-- Имя стиля --> 
+                <key>match</key>
+                <string>\bWarning\s\d{1}\s([a-z0-9]{16}):\d{1}\b|((?:\s):\d{1,2})</string> <!-- Ошибки --> 
+            </dict>
+
+            <dict>
+                <key>name</key>
+                <string>Yellow</string> <!-- Имя стиля --> 
+                <key>match</key>
+                <string> \d{1,2}:</string> <!-- Ошибки --> 
+            </dict>
+
+        <!---
+            <dict>
+                <key>name</key>
+                <string>paleturquoise</string>
+                <key>match</key>
+                <string>((TaskConfig)|(EngInv))\s((TaskCfgParam(Init|Info))|(Arg))\s\d{1}\s([a-z0-9]{16}):\d{1}</string>
+            </dict>
+        -->
+
+            <dict>
+                <key>name</key>
+                <string>violet</string> 
+                <key>match</key>
+                <string>\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}</string> <!-- дата, время --> 
+            </dict>
+
+            <dict>
+                <key>name</key>
+                <string>green</string> <!-- Имя стиля --> 
+                <key>match</key>
+                <string>(Fetch Rows: \d+)|(Export Successful)|(Done exporting)|(\b\s+(OR)|(AND)|(SELECT)|(IN)|(FROM)|(WHERE)|(ORDER BY)|(GROUP BY)\s+\b)|(----(\w+)?)|(Begin:)|(End:)|(Bind variable \b\d+:\b)|(\(NewRecord\))|(\(WriteRecord\)|(\(PositionOnRow\)))</string> <!-- Begin --> 
+            </dict>
+
+            <dict>
+                <key>name</key>
+                <string>green</string> <!-- Имя стиля --> 
+                <key>match</key>
+                <string>(SWE Command Processor)|(ControlName)|(SWEActiveView)|(SWEMethod)|(SWECmd)|(FocusBusComp)|(refID)|(SWEBHWND)|(SWEActiveApplet)|(SWEService)|(SWERPC)|(SWEC)|(FromCTIToolBar)|(SRN)|(SWETS)|(Work Edit)|(SWEField)|(SWENeedContext)|(SWER)|(SWESP)|(SWEP)|(SWERowIds)|(SWEVI)|(SWEDIC)|(SWEReqRowId)|(SWEView)|(SWERowId)|(SWEBID)|(SWEApplet)|(\d+\.\d+\s+seconds)</string> <!-- Begin --> 
+            </dict>
+            
+            <dict>
+                <key>name</key>
+                <string>Blue</string> 
+                <key>match</key>
+                <string>(true)|(false)</string> <!-- константы --> 
+            </dict>
+            
+
+            <dict>
+                <key>name</key>
+                <string>expc</string> <!-- Имя стиля --> 
+                <key>match</key>
+                <string>(LookupValue)|(IIF)</string> <!-- Begin --> 
+            </dict>
+
+
+            <dict>
+                <key>name</key>
+                <string>Blue</string> <!-- Имя стиля --> 
+                <key>match</key>
+                <string>(!ERROR::)|(STATUS:)|(Пройдена ветвь шага:)|(Ядро задач запрошено для перехода к следующему шагу:)|(Реализация определения шага)|(Ядро задач запрошено для перехода к следующему представлению.)|(Input:)|(Output:)|(Остановка экземпляра шага)|('([\w\d\s-\(\)\&/])+')|("([\w\d\s-;\.,/])+")</string> <!-- End --> 
+            </dict>
+            
+            <!--<dict>
+                <key>name</key>
+                <string>DarkBlue</string>
+                <key>match</key>
+                <string>Остановка экземпляра шага</string>
+            </dict>--> 
+
+            <dict>
+                <key>name</key>
+                <string>Orangered</string> <!-- Имя стиля --> 
+                <key>match</key>
+                <string>Ветвь шага\s\(([A-z0-9_-]\w+|.)\)\sне пройдена\.</string> <!-- End --> 
+            </dict>
+
+
+            <!-- ТЕКСТОВЫЕ ОШИБКИ -->
+            <dict>
+                <key>name</key>
+                <string>EasyRed</string>
+                <key>match</key>
+                <string>Ошибка при записи в запись.</string> 
+            </dict>
+            
+            <dict>
+                <key>name</key>
+                <string>EasyRed</string>
+                <key>match</key>
+                <string>Представление(([\w\d\s-\(\)])+) не содержит аплет .</string> 
+            </dict>
+
+            <dict>
+                <key>name</key>
+                <string>EasyRed</string>
+                <key>match</key>
+                <string>Файл (([\w\d\s-.&])+) не найден ни в одной из указанных файловых систем.</string> 
+            </dict>
+
+            <dict>
+                <key>name</key>
+                <string>EasyRed</string>
+                <key>match</key>
+                <string>Определение многозначной ссылки ('([\w\d\s-.&])+') для определения бизнес-компонента ('([\w\d\s-.&])+') не существует. Попросите системного администратора проверить конфигурацию приложения.</string> 
+            </dict>
+
+            <dict>
+                <key>name</key>
+                <string>EasyRed</string>
+                <key>match</key>
+                <string>Выражение не соответствует ни одному грамматическому правилу языка запросов Siebel.</string> 
+            </dict>   
+
+            <dict>
+                <key>name</key>
+                <string>EasyRed</string>
+                <key>match</key>
+                <string>Недопустимая спецификация поиска</string> 
+            </dict> 
+                
+            <dict>
+                <key>name</key>
+                <string>EasyRed</string>
+                <key>match</key>
+                <string>Поле ('([\w\d\s-.&])+') не найдено в бизнес-компоненте ('([\w\d\s-.&])+').</string> 
+            </dict>
+
+            <dict>
+                <key>name</key>
+                <string>EasyRed</string>
+                <key>match</key>
+                <string>Пустой набор свойств вывода. Убедитесь в допустимости входного XML.</string> 
+            </dict>
+
+            <dict>
+                <key>name</key>
+                <string>EasyRed</string>
+                <key>match</key>
+                <string>Правила индивидуальной настройки для пользователя(\s+'([\w]+)'\s+)исключают доступность представления</string> 
+            </dict>
+
+            <dict>
+                <key>name</key>
+                <string>EasyRed</string>
+                <key>match</key>
+                <string>Полномочия пользователя(\s+'([\w]+)'\s+)не разрешают доступ к представлению</string> 
+            </dict>
+
+            <dict>
+                <key>name</key>
+                <string>EasyRed</string>
+                <key>match</key>
+                <string>Field ([\w\d\s-.&/])+ is not activated in BusComp ([\w\d\s-.&/])+.</string> 
+            </dict>
+
+            
+            <!-- БЛОК ПЕРЕМЕННЫХ -->
+            <dict>
+                <key>name</key>
+                <string>DodgerBlue</string>
+                <key>match</key>
+                <string>(\[([\w\d\s-\.\&/])+\])</string>
+            </dict>
+                       
+
+        </array>
+        <key>name</key>
+        <string>SiebelLog</string> 
+        <key>scopeName</key>
+        <string>SiebelLog</string>
+        <key>fileTypes</key>
+        <array>
+            <string>log</string> <!-- К этому расширению файла будет автоматически применяться данный синтаксис -->
+        </array>
+    </dict>
+</plist>

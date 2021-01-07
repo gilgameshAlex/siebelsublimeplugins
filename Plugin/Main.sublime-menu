@@ -1,0 +1,17 @@
+[
+	{
+		"id": "siebel",
+		"caption": "Siebel",
+		"children":
+		[
+			{"command": "dec_to_hex", "caption": "ExecTimeReport"},
+			{"command": "show_only_problem", "caption": "Show Only Warning"},
+			{"command": "show_only_problem_async", "caption": "Show Only Warning (Async)"},
+			{"command": "show_only_error", "caption": "Show Only Error"},
+			{"command": "show_exec_time_wf", "caption": "Exec Time WF"},
+			{"command": "str_to_ps", "caption": "String to PS"},
+			{"command": "bind_to_sql", "caption": "Bind To SQL"},
+			{"command": "test", "caption": "test"}
+		]
+	}
+]
