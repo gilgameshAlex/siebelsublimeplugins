@@ -1,17 +1,43 @@
 [
 	{
 		"id": "siebel",
+		"mnemonic": "b",
 		"caption": "Siebel",
 		"children":
 		[
-			{"command": "dec_to_hex", "caption": "ExecTimeReport"},
-			{"command": "show_only_problem", "caption": "Show Only Warning"},
-			{"command": "show_only_problem_async", "caption": "Show Only Warning (Async)"},
-			{"command": "show_only_error", "caption": "Show Only Error"},
-			{"command": "show_exec_time_wf", "caption": "Exec Time WF"},
-			{"command": "str_to_ps", "caption": "String to PS"},
-			{"command": "bind_to_sql", "caption": "Bind To SQL"},
-			{"command": "test", "caption": "test"}
+			{
+				"id": "siebel_replace",
+				"mnemonic": "R",
+				"caption": "Replace",
+				"children":
+				[
+					{"command": "str_to_ps_replace", "caption": "String to PS (Replace)"},
+					{"command": "str_to_ps_new_view", "caption": "String to PS (New View)"},
+					{"command": "bind_to_sql_replace", "caption": "Bind To SQL (Replace)"},
+					{"command": "bind_to_sql_new_view", "caption": "Bind To SQL (New View)"}
+				]
+			},
+			{
+				"id": "siebel_error",
+				"mnemonic": "E",
+				"caption": "Error",
+				"children":
+				[
+					{"command": "show_only_problem", "caption": "Show Only Warning"},
+					{"command": "show_only_problem_async", "caption": "Show Only Warning (Async)"},
+					{"command": "show_only_error", "caption": "Show Only Error"}
+				]
+			},
+			{
+				"id": "siebe_time",
+				"mnemonic": "A",
+				"caption": "Analyze",
+				"children":
+				[
+					{"command": "show_exec_time_wf", "caption": "Exec Time WF"},
+					{"command": "show_exec_time_sql", "caption": "Exec Time SQL"},
+				]
+			}
 		]
 	}
 ]
