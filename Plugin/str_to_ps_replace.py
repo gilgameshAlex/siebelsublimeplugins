@@ -18,7 +18,7 @@ class StrToPsReplaceCommand(sublime_plugin.TextCommand):
             size_res = len(list_res)
             cur_index = 7
             st_value  = int(list_res[cur_index - 1])
-            resultStr, cur_index, st_value = StrToPs.TravelTree(0, 0, st_value, list_res, size_res, size_res, cur_index, resultStr)
+            resultStr, cur_index, st_value = StrToPsReplaceCommand.TravelTree(0, 0, st_value, list_res, size_res, size_res, cur_index, resultStr)
             self.view.replace(edit, region, resultStr)
         sublime.status_message("Complete - StrToPsReplace")
 
