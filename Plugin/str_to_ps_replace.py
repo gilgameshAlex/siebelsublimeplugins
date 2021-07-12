@@ -42,9 +42,9 @@ class StrToPsReplaceCommand(sublime_plugin.TextCommand):
                         next_position = cur_index + 2
                         next_size = next_position + st_value * 2 + int(cur_str) + 1
                         if int(cur_str) == 0:
-                            resultStr, cur_index, st_value = StrToPs.TravelTree(next_level, 0, next_lenght, list_res, list_size, next_size, next_position, resultStr)
+                            resultStr, cur_index, st_value = StrToPsReplaceCommand.TravelTree(next_level, 0, next_lenght, list_res, list_size, next_size, next_position, resultStr)
                         else:
-                            resultStr, cur_index, st_value = StrToPs.TravelTree(next_level, int(cur_str), next_lenght, list_res, list_size, list_size, next_position, resultStr)
+                            resultStr, cur_index, st_value = StrToPsReplaceCommand.TravelTree(next_level, int(cur_str), next_lenght, list_res, list_size, list_size, next_position, resultStr)
                         cur_limit = cur_limit + 1
                     else:
                         begin = False
