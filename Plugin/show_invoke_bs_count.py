@@ -18,7 +18,7 @@ class ShowInvokeBsCountCommand(sublime_plugin.WindowCommand):
         for region in regions:
             for line in v.lines(region):
                 s = v.substr(line)
-                str2 = re.findall(r'\'[\(\)\d\s\w]+\'', s)
+                str2 = re.findall(r'\'[\(\)\#\d\s\w]+\'', s)
                 svcItem = "BS: " + str2[0] + " METHOD: " + str2[1]
 
                 if svcItem in arrSvcName:
