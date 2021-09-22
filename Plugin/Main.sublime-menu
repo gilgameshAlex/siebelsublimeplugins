@@ -36,6 +36,7 @@
 				[
 					{"command": "show_exec_time_wf", "caption": "Exec Time WF"},
 					{"command": "show_exec_time_sql", "caption": "Exec Time SQL"},
+					{"command": "show_invoke_bs_count", "caption": "Count Invoke BS"}
 				]
 			}
 		]
