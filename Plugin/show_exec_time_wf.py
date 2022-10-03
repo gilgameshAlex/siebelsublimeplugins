@@ -15,13 +15,15 @@ class ShowExecTimeWfCommand(sublime_plugin.WindowCommand):
         resultStr = ""
         startTime = datetime.datetime.now()
         regions = v.find_all(r'(Реализация определения процесса)|(Реализация определения шага)|(Остановка экземпляра шага)|(Остановка экземпляра процесса)|(Instantiating step definition)|(Stopping step instance of)|(Instantiating process definition)|(Stopping process instance of)')#, sublime.IGNORECASE,"\2:")
+        strcon = ""
+        endlevel = 0
         for region in regions:
             for line in v.lines(region):
                 s = v.substr(line)
                 s = s.replace('(', '')
                 s = s.replace(')', '')
                 s = s.replace('.', '')
-                print (s)
+                #print (s)
                 match = re.search('(Реализация определения процесса)|(Instantiating process definition)', s)
                 if match:
                     level = level + 1
@@ -29,7 +31,7 @@ class ShowExecTimeWfCommand(sublime_plugin.WindowCommand):
                     t1 = datetime.datetime.strptime(str2[0], "%Y-%m-%d %H:%M:%S")
                     s = re.sub (r'.+Реализация определения процесса\s+', '', s)
                     s = re.sub (r'.+Instantiating process definition\s+', '', s)
-                    resultStr = resultStr + "[START WF] " + s + " [" + str(t1) + ']\n'
+                    strcon = "[Start WF] " + s + " [" + str(t1) + ']\n\r'
                 else:
                     match = re.search('(Реализация определения шага)|(Instantiating step definition)', s)
                     if match:
@@ -37,29 +39,34 @@ class ShowExecTimeWfCommand(sublime_plugin.WindowCommand):
                         t1 = datetime.datetime.strptime(str2[0], "%Y-%m-%d %H:%M:%S")
                         s = re.sub (r'.+Реализация определения шага\s+', '', s)
                         s = re.sub (r'.+Instantiating step definition\s+', '', s)
-
-                        #i = 0
-                        #while i < (level * 4):
-                        #    resultStr = resultStr + " "
-                        #    i = i + 1
-                        #for k in range (1):
-                        #    resultStr = resultStr + ' '
-                        resultStr = resultStr + str(level) +"-[STEP] " + s
+                        strcon = str(level) +"-[Step] " + s + "\n\r"
                     else:
                         match = re.search('(Остановка экземпляра шага)|(Stopping step instance of)', s)
                         if match:
                             str2 = re.findall (r'\d{4}-\d{1,2}-\d{1,2}\s+\d{1,2}:\d{1,2}:\d{1,2}', s)
                             t2 = datetime.datetime.strptime(str2[0], "%Y-%m-%d %H:%M:%S")
-                            resultStr = resultStr + " [" + str((t2-t1).seconds) +' sec]\n'
+                            strcon = " [" + str((t2-t1).seconds) +' sec]\n\r'
                         else:
+                            endlevel = 1
                             match = re.search(r'(Остановка экземпляра процесса)|(Stopping process instance of)', s)
                             if match:
-                                level = level - 1
                                 str2 = re.findall (r'\d{4}-\d{1,2}-\d{1,2}\s+\d{1,2}:\d{1,2}:\d{1,2}', s)
                                 t1 = datetime.datetime.strptime(str2[0], "%Y-%m-%d %H:%M:%S")
                                 s = re.sub (r'.+Остановка экземпляра процесса\s+', '', s)
                                 s = re.sub (r'.+Stopping process instance of\s+', '', s)
-                                resultStr = resultStr + "[END WF] " + s + " [" + str(t1) + ']\n';
+                                strcon = "[Stop WF] " + s + " Execute Time: [" + str(t1) + ']\n\r'
+                i = 0
+                spacesstr = ""
+                while i < (level * 2):
+                    spacesstr = spacesstr + " "
+                    i = i + 1
+                if resultStr == "":
+                    resultStr = "\r" + strcon
+                else:
+                    resultStr = resultStr + spacesstr + strcon
+                if endlevel == 1:
+                    endlevel = 0
+                    level = level - 1
         if resultStr:
             newView = v.window().new_file()
             newView.run_command("insert",{"characters": resultStr})
