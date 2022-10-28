@@ -12,4 +12,3 @@
 4. **Replace** -> **Bind To SQL (New View)**. Аналогично п.3, только результат будет отображен на новой вкладке.
 5. **Analyze** -> **Exec Time WF**. Раскладывает все WF и отображает время выполнения шагов WFов.
 6. После открытия лога в нижнем правом углу редактора можно выбрать в выпадающем списке подсветку для логов Siebel - `SiebelLog`.
-https://ext.enkod.ru/v9/unsubscribe/NWU2OjQ1Yjo3YWJhOGQ6NjowOjA6MjoxOllXeGxhM05sZVM1aWIyNUFjbTl6WW1GdWF5NXlkUT09OjIs?c=dGltZXBhZA== 
