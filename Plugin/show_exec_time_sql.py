@@ -23,7 +23,8 @@ class ShowExecTimeSqlCommand(sublime_plugin.WindowCommand):
                 s = v.substr(line)
                 str2 = re.findall(r'ID.+:', s)
                 svcItem = "Cursor: " + str2[0]
-                str3 = re.findall(r'\s[\d\.]+', s);
+                str4 = re.sub(r'ID.+:','',s)
+                str3 = re.findall(r'\s[\d\.]+', str4);
                 myDict[svcItem] = str3[0]
         sortedDict = {}
         sortedKeys = sorted(myDict, key=myDict.get)
