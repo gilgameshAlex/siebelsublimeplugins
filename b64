@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	function btnclic(argument) {
+		Main()
+	}
+	const toBase64 = file => new Promise((resolve, reject) => {
+	    const reader = new FileReader();
+	    reader.readAsDataURL(file);
+	    reader.onload = () => resolve(reader.result);
+	    reader.onerror = error => reject(error);
+	});
+
+	async function Main() {
+	   const file = document.querySelector('#myfile').files[0];
+	   console.log(await toBase64(file));
+	}
+
+</script>
+<input type="file" id="myfile">
+<button onclick="btnclic()">Convert</button>
+</body>
+</html>
