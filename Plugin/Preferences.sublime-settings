@@ -1,4 +1,11 @@
 {
-	"color_scheme": "Packages/User/SiebelLog.tmTheme",
-	"font_size": 12
+	"color_scheme": "Packages/User/SiebelLog2.tmTheme",
+	"font_size": 10,
+	"theme": "Default Dark.sublime-theme",
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"show_encoding": true,
+	"fallback_encoding": "Cyrillic (Windows 1251)",
 }
