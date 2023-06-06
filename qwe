@@ -1,0 +1,24 @@
+try (   PdfReader pdfReader = new PdfReader("1100-SD-9000455596.pdf");
+        PdfWriter pdfWriter = new PdfWriter("1100-SD-9000455596-Fixed.pdf");
+        PdfDocument pdfDocument = new PdfDocument(pdfReader, pdfWriter) ) {
+    for (int page = 1; page <= pdfDocument.getNumberOfPages(); page++) {
+        PdfPage pdfPage = pdfDocument.getPage(page);
+        PdfResources pdfResources = pdfPage.getResources();
+        for (Entry<PdfName, PdfObject> fontEntry : pdfResources.getResource(PdfName.Font).entrySet()) {
+            PdfObject fontObject = fontEntry.getValue();
+            if (fontObject != null && fontObject.getType() == PdfObject.INDIRECT_REFERENCE) {
+                fontObject = ((PdfIndirectReference)fontObject).getRefersTo(true);
+            }
+            if (fontObject instanceof PdfDictionary) {
+                PdfDictionary fontDictionary = (PdfDictionary) fontObject;
+                PdfDictionary encodingDictionary = fontDictionary.getAsDictionary(PdfName.Encoding);
+                if (encodingDictionary != null) {
+                    if (encodingDictionary.getAsName(PdfName.BaseEncoding) == null &&
+                            encodingDictionary.getAsArray(PdfName.Differences) != null) {
+                        encodingDictionary.put(PdfName.BaseEncoding, PdfName.WinAnsiEncoding);
+                    }
+                }
+            }
+        }
+    }
+}
