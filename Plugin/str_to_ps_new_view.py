@@ -74,5 +74,6 @@ class StrToPsNewViewCommand(sublime_plugin.TextCommand):
                     else:
                         resultStr = resultStr + "\n"
                     if cur_index + 1 < list_size:
-                        st_value = int(cur_str[st_value:])
+                        if cur_str[st_value:].isdigit():
+                            st_value = int(cur_str[st_value:])
             cur_index = cur_index + 1
