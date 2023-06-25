@@ -1,0 +1,12 @@
+[
+	{
+		"id": "siebel",
+		"mnemonic": "b",
+		"caption": "Siebel",
+		"children":
+		[
+			{"command": "str_to_ps_replace", "caption": "String to PS"},
+			{"command": "bind_to_sql_replace", "caption": "Bind To SQL"}
+		]
+	}
+]
